@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import { Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
@@ -11,7 +13,31 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload (Edited by Vedant Subramanian).
             </p>
+            <Button onClick={() => console.log("Hello World!")}>
+                Log Hello World
+            </Button>
             <p>Hello World!</p>
+            <h1>Ice Cream</h1>
+            <img
+                src="C:\Users\subra\Downloads\Ice Cream.jpg"
+                alt="A picture of Ice Cream"
+            />
+            <p>Ice Cream Flavors</p>
+            <ul>
+                <li>Chocolate</li>
+                <li>Vanilla</li>
+                <li>Strawberry</li>
+            </ul>
+            <Container>
+                <Row>
+                    <Col>
+                        <div id="rectangle"></div>
+                    </Col>
+                    <Col>
+                        <div id="rectangle"></div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
