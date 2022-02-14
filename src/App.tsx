@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import pic from "./Ice Cream.jpg";
+import pic from "./IceCream.jpg";
 
 function App(): JSX.Element {
     return (
