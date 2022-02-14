@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
+import pic from "./Ice Cream.jpg";
 
 function App(): JSX.Element {
     return (
@@ -19,8 +20,10 @@ function App(): JSX.Element {
             <p>Hello World!</p>
             <h1>Ice Cream</h1>
             <img
-                src="C:\Users\subra\Downloads\Ice Cream.jpg"
+                src={pic}
                 alt="A picture of Ice Cream"
+                width="300"
+                height="400"
             />
             <p>Ice Cream Flavors</p>
             <ul>
