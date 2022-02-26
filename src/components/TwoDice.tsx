@@ -30,7 +30,6 @@ export function TwoDice(): JSX.Element {
             {rightDice}
             <div>
                 <span data-testid="left-die">{value1}</span>
-                <span data-testid="right-die">{value2}</span>
                 {value1 !== value2 ? (
                     <span>Again</span>
                 ) : value1 !== 1 ? (
@@ -38,6 +37,7 @@ export function TwoDice(): JSX.Element {
                 ) : (
                     <span>Lose!</span>
                 )}
+                <span data-testid="right-die">{value2}</span>
             </div>
         </div>
     );
