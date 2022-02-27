@@ -39,6 +39,18 @@ describe("ChooseTeam Component tests", () => {
         expect(currentTeam[1].textContent).toEqual(second.textContent);
         expect(currentTeam[2].textContent).toEqual(fifth.textContent);
     });
+    test("Clicking the same member again does not add to the list", () => {
+        const first = screen.queryAllByRole("button")[0];
+        const fourth = screen.queryAllByRole("button")[3];
+        first.click();
+        fourth.click();
+        first.click();
+        first.click();
+        const currentTeam = screen.queryAllByRole("listitem");
+        expect(currentTeam).toHaveLength(2);
+        expect(currentTeam[0].textContent).toEqual(first.textContent);
+        expect(currentTeam[1].textContent).toEqual(fourth.textContent);
+    });
     test("Clearing the team works", () => {
         const [, second, third, fourth, fifth, , clear] =
             screen.queryAllByRole("button");
