@@ -24,15 +24,18 @@ function Gain({ cNumber }: UseProps): JSX.Element {
 
 function RequestAttempts({ attempts, giveAttempts }: GiveProps): JSX.Element {
     function updateAtt(event: ChangeEvent) {
-        giveAttempts(parseInt(event.target.value) || 0);
+        giveAttempts(parseInt(event.target.value));
     }
     return (
         <div>
             <Form.Group controlId="formAttempts">
                 <Form.Label>Attempts:</Form.Label>
-                <Form.Control value={attempts} onChange={updateAtt} />
+                <Form.Control
+                    type="number"
+                    value={attempts}
+                    onChange={updateAtt}
+                />
             </Form.Group>
-            <div>{attempts} attempts are being requested.</div>
         </div>
     );
 }
