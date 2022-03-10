@@ -15,6 +15,7 @@ const COLORS = [
     "indigo",
     "violet"
 ];
+const DEFAULT_COLOR = COLORS[0];
 function ColorList({ color, setColor }: ColorProps): JSX.Element {
     function updateColor(event: ChangeEvent) {
         setColor(event.target.value);
@@ -29,17 +30,8 @@ function ColorList({ color, setColor }: ColorProps): JSX.Element {
                     key={clr}
                     value={clr}
                     onChange={updateColor}
-                    id={"colors-choice-" + clr}
-                    label={
-                        <span
-                            style={{
-                                backgroundColor: clr,
-                                display: "inline-list-item"
-                            }}
-                        >
-                            {"\t" + clr.charAt(0).toUpperCase() + clr.slice(1)}
-                        </span>
-                    }
+                    id={clr}
+                    label={clr.charAt(0).toUpperCase() + clr.slice(1)}
                     checked={color === clr}
                 />
             ))}
@@ -64,7 +56,7 @@ function TextColor({ color }: { color: string }): JSX.Element {
     );
 }
 export function ChangeColor(): JSX.Element {
-    const [color, setColor] = useState<string>(COLORS[0]);
+    const [color, setColor] = useState<string>(DEFAULT_COLOR);
     return (
         <div>
             <h3>Change Color</h3>
