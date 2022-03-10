@@ -24,7 +24,7 @@ function Gain({ cNumber }: UseProps): JSX.Element {
 
 function RequestAttempts({ attempts, giveAttempts }: GiveProps): JSX.Element {
     function updateAtt(event: ChangeEvent) {
-        giveAttempts(parseInt(event.target.value));
+        giveAttempts(parseInt(event.target.value) || 0);
     }
     return (
         <div>
