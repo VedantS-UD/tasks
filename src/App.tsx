@@ -22,8 +22,8 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript Quizzer Development
-                in Progress
+                UD CISC275 with React Hooks and TypeScript
+                <br></br>Quizzer Development in Progress
             </header>
             <Quizzer></Quizzer>
             {/*             <hr></hr>
@@ -59,14 +59,14 @@ function App(): JSX.Element {
             <ChangeType></ChangeType>
             <hr />
             <CycleHoliday></CycleHoliday> */}
-            <hr>Sketch</hr>
+            <h1>Sketch</h1>
             <img
                 src={pic}
                 alt="A picture of Ice Cream"
                 width="300"
                 height="400"
             />
-            <hr>Completed Features</hr>
+            <h2>Completed Features</h2>
             <ul>
                 <li>Stuff</li>
                 <li>N/A</li>
