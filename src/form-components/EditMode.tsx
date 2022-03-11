@@ -26,6 +26,10 @@ function SwitchMode({ mode, setMode }: ModeProps): JSX.Element {
                 label="Edit Mode?"
                 checked={mode}
                 onChange={updateMode}
+                style={{
+                    margin: "auto",
+                    width: "fit-content"
+                }}
             />
             <div>The user is {mode ? "in edit mode" : "not in edit mode"}.</div>
         </div>
@@ -40,7 +44,16 @@ function EditName({ name, setName }: NameProps): JSX.Element {
         <div>
             <Form.Group controlId="formName">
                 <Form.Label>Enter Name:</Form.Label>
-                <Form.Control value={name} onChange={updateName} />
+                <Form.Control
+                    value={name}
+                    onChange={updateName}
+                    style={{
+                        width: "fit-content",
+                        display: "-ms-inline-flexbox",
+                        margin: "auto",
+                        textAlign: "center"
+                    }}
+                />
             </Form.Group>
         </div>
     );
@@ -58,6 +71,10 @@ function Student({ isStudent, setStudent }: StudentProps): JSX.Element {
                 label="Student?"
                 checked={isStudent}
                 onChange={updateStudent}
+                style={{
+                    margin: "auto",
+                    width: "fit-content"
+                }}
             />
         </div>
     );

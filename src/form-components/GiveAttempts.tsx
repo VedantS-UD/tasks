@@ -6,13 +6,13 @@ interface GiveProps {
     attempts: number;
 }
 interface UseProps {
-    att?: number;
+    att: number;
     cNumber: () => void;
 }
 
 function Use({ cNumber, att }: UseProps): JSX.Element {
     return (
-        <Button onClick={cNumber} disabled={att === 0}>
+        <Button onClick={cNumber} disabled={att <= 0}>
             use
         </Button>
     );
@@ -34,6 +34,12 @@ function RequestAttempts({ attempts, giveAttempts }: GiveProps): JSX.Element {
                     type="number"
                     value={attempts}
                     onChange={updateAtt}
+                    style={{
+                        width: "fit-content",
+                        display: "-ms-inline-flexbox",
+                        margin: "auto",
+                        textAlign: "center"
+                    }}
                 />
             </Form.Group>
         </div>
@@ -53,7 +59,7 @@ export function GiveAttempts(): JSX.Element {
                 giveAttempts={giveAttempts}
             ></RequestAttempts>
             <Use att={att} cNumber={useAtt}></Use>
-            <Gain cNumber={giveAtt}></Gain>
+            <Gain att={att} cNumber={giveAtt}></Gain>
             <div>Currently, there are {att} attempts available.</div>
         </div>
     );
