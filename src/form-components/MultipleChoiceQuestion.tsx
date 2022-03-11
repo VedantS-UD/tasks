@@ -15,7 +15,16 @@ function SelectAnswer({ ans, selectAns, options }: AnswerProps): JSX.Element {
         <div>
             <Form.Group controlId="selectAnswer">
                 <Form.Label>What is the correct answer?</Form.Label>
-                <Form.Select value={ans} onChange={updateAns}>
+                <Form.Select
+                    value={ans}
+                    onChange={updateAns}
+                    style={{
+                        width: "fit-content",
+                        display: "-ms-inline-flexbox",
+                        margin: "auto",
+                        textAlign: "center"
+                    }}
+                >
                     {options.map((a: string) => (
                         <option key={a} value={a}>
                             {a}

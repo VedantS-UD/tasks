@@ -14,7 +14,16 @@ function UserAnswer({ ans, setAns }: AnswerProps): JSX.Element {
         <div>
             <Form.Group controlId="formAnswer">
                 <Form.Label>Answer:</Form.Label>
-                <Form.Control value={ans} onChange={updateAns} />
+                <Form.Control
+                    value={ans}
+                    onChange={updateAns}
+                    style={{
+                        width: "fit-content",
+                        display: "-ms-inline-flexbox",
+                        margin: "auto",
+                        textAlign: "center"
+                    }}
+                />
             </Form.Group>
             <div>The entered answer is {ans}.</div>
         </div>
