@@ -24,15 +24,15 @@ export function QuizView({
             <Row>
                 <Col>
                     <h3>{quiz.nameQuiz}</h3>
+                    <p>{quiz.description}</p>
                     <i> Questions: </i>
-                    {quiz.content.map((q: Question) => (
-                        <div key={q.id}>{q.body}</div>
-                    ))}
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <p>{quiz.description}</p>
+                    {quiz.content.map((q: Question) => (
+                        <div key={q.id}>{q.body}</div>
+                    ))}
                 </Col>
             </Row>
         </Container>
