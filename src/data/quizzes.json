@@ -39,7 +39,7 @@
     "GEO_QUIZ": {
         "identity": 2,
         "nameQuiz": "Geography",
-        "description": "A Quiz about Geograpy",
+        "description": "A Quiz about Geography",
         "content": [
             {
                 "id": 1,

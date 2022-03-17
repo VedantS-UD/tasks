@@ -27,7 +27,6 @@ export function QuizView({
             )
         );
     }
-
     function deleteQuestion(id: number) {
         setQuestions(
             questions.filter(
@@ -35,7 +34,6 @@ export function QuizView({
             )
         );
     }
-
     function addQuestion(newQuestion: Question) {
         const existing = questions.find(
             (question: Question): boolean => question.id !== newQuestion.id
@@ -44,38 +42,34 @@ export function QuizView({
             setQuestions([...questions, newQuestion]);
         }
     }
-    return (
-        <div>
-            <h3>{quiz.nameQuiz}</h3>
-            <span>
-                <Button onClick={changeEditing}>Edit Quiz</Button>
-            </span>
-            {editing ? (
-                <EditQuiz
-                    quiz={quiz}
-                    deleteQuiz={deleteQuiz}
-                    editQuiz={editQuiz}
-                    changeEditing={changeEditing}
-                ></EditQuiz>
-            ) : (
-                <Container>
-                    <Row>
-                        <Col>
-                            <p>{quiz.description}</p>
-                            <i> Questions: </i>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <QuestionList
-                                questions={quiz.content}
-                                deleteQuestion={deleteQuestion}
-                                editQuestion={editQuestion}
-                            ></QuestionList>
-                        </Col>
-                    </Row>
-                </Container>
-            )}
-        </div>
+    return editing ? (
+        <EditQuiz
+            quiz={quiz}
+            deleteQuiz={deleteQuiz}
+            editQuiz={editQuiz}
+            changeEditing={changeEditing}
+        ></EditQuiz>
+    ) : (
+        <Container>
+            <Row>
+                <Col>
+                    <h3>{quiz.nameQuiz}</h3>
+                    <p>
+                        {quiz.description}
+                        <Button onClick={changeEditing}>Edit Quiz</Button>
+                    </p>
+                    <i> Questions: </i>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <QuestionList
+                        questions={questions}
+                        deleteQuestion={deleteQuestion}
+                        editQuestion={editQuestion}
+                    ></QuestionList>
+                </Col>
+            </Row>
+        </Container>
     );
 }

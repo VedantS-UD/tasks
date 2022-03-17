@@ -32,10 +32,12 @@ export function QuestionView({
     }
     return (
         <div>
+            <Button onClick={changeEdit}>Edit Question</Button>
             {question.body}
-            <span>
-                <Button onClick={changeEdit}>Edit Question</Button>
-            </span>
+            <p>
+                {question.published ? "Published" : "Not Published"}
+                Points: {question.points}
+            </p>
             {edit ? (
                 <EditQuestion
                     question={question}

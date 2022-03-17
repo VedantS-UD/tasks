@@ -21,9 +21,11 @@ function App(): JSX.Element {
             />
             <h2>Completed Features</h2>
             <ul>
-                <li>Stuff</li>
-                <li>N/A</li>
-                <li>N/A</li>
+                <li>View Quizzes</li>
+                <li>View Questions</li>
+                <li>Respond to Questions</li>
+                <li>Edit Quiz (Partial)</li>
+                <li>Edit Questions (Partial)</li>
             </ul>
             <HideTasks></HideTasks>
         </div>
