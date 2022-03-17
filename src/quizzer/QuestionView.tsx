@@ -1,24 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import { Answer } from "../interfaces/answer";
 import { Question } from "../interfaces/question";
-import { DisplayQuestion } from "./DisplayQuestion";
+import { EditQuestion } from "./EditQuestion";
+import { MultipleAnswer } from "./MultipleAnswer";
+import { ShortAnswer } from "./ShortAnswer";
+function DisplayAnswer({
+    question,
+    answer,
+    editAnswer
+}: {
+    question: Question;
+    answer: Answer;
+    editAnswer: (questionId: number, newAnswer: Answer) => void;
+}): JSX.Element {
+    if (question.type === "multiple_choice_question") {
+        return (
+            <MultipleAnswer
+                options={question.options}
+                expectedAnswer={question.expected}
+                answer={answer}
+                editAnswer={editAnswer}
+            ></MultipleAnswer>
+        );
+    } else {
+        return (
+            <ShortAnswer
+                expectedAnswer={question.expected}
+                answer={answer}
+                editAnswer={editAnswer}
+            ></ShortAnswer>
+        );
+    }
+}
 
 export function QuestionView({
     question,
     deleteQuestion,
     editQuestion,
-    filterPublish
+    answer,
+    editAnswer
 }: {
     question: Question;
     deleteQuestion: (id: number) => void;
     editQuestion: (id: number, newQuestion: Question) => void;
-    filterPublish: boolean;
+    answer: Answer;
+    editAnswer: (questionId: number, newAnswer: Answer) => void;
 }): JSX.Element {
-    return (
-        <DisplayQuestion
-            question={question}
-            deleteQuestion={deleteQuestion}
-            editQuestion={editQuestion}
-            filterPublish={filterPublish}
-        ></DisplayQuestion>
+    const [edit, setEdit] = useState<boolean>(false);
+    function changeEdit() {
+        setEdit(!edit);
+    }
+    return edit ? (
+        <div>
+            <EditQuestion
+                question={question}
+                deleteQuestion={deleteQuestion}
+                editQuestion={editQuestion}
+                changeEdit={changeEdit}
+            ></EditQuestion>
+        </div>
+    ) : (
+        <div>
+            <Button onClick={changeEdit}>Edit Question</Button>
+            {question.body}
+            <p>
+                {question.published ? "Published" : "Not Published"}
+                Points: {question.points}
+            </p>
+            <DisplayAnswer
+                question={question}
+                answer={answer}
+                editAnswer={editAnswer}
+            ></DisplayAnswer>
+        </div>
     );
 }
