@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { Question } from "../interfaces/question";
 import { Quiz } from "../interfaces/quiz";
+import { sumPoints, sumPublishedPoints } from "../nested";
 import { EditQuiz } from "./EditQuiz";
 import { QuestionList } from "./QuestionList";
 
@@ -15,10 +16,14 @@ export function QuizView({
     editQuiz: (identity: number, newQuiz: Quiz) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
+    const [filterPublish, setFilterPublish] = useState<boolean>(false);
+    const [questions, setQuestions] = useState<Question[]>(quiz.content);
     function changeEditing() {
         setEditing(!editing);
     }
-    const [questions, setQuestions] = useState<Question[]>(quiz.content);
+    function filter() {
+        setFilterPublish(!filterPublish);
+    }
     function editQuestion(id: number, newQuestion: Question) {
         setQuestions(
             questions.map(
@@ -67,7 +72,13 @@ export function QuizView({
                         questions={questions}
                         deleteQuestion={deleteQuestion}
                         editQuestion={editQuestion}
+                        filterPublish={filterPublish}
                     ></QuestionList>
+                    <Button onClick={filter}>Filter</Button>
+                    Total Points:
+                    {filterPublish
+                        ? sumPublishedPoints(questions)
+                        : sumPoints(questions)}
                 </Col>
             </Row>
         </Container>

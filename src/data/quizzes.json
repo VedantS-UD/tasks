@@ -9,7 +9,7 @@
                 "name": "Question 1",
                 "body": "What type is Pikachu?",
                 "type": "multiple_choice_question",
-                "options": ["electric", "ice", "fire", "normal", "mouse"],
+                "options": ["", "electric", "ice", "fire", "normal", "mouse"],
                 "expected": "electric",
                 "points": 1,
                 "published": false
@@ -19,7 +19,7 @@
                 "name": "Question 2",
                 "body": "How many gym badges are there before the Elite Four?",
                 "type": "multiple_choice_question",
-                "options": ["8", "16", "7", "9"],
+                "options": ["", "8", "16", "7", "9"],
                 "expected": "8",
                 "points": 1,
                 "published": false
@@ -66,7 +66,7 @@
                 "name": "Question 3",
                 "body": "Which of these is not a color on the US Flag?",
                 "type": "multiple_choice_question",
-                "options": ["red", "white", "cerulean"],
+                "options": ["", "red", "white", "cerulean"],
                 "expected": "cerulean",
                 "points": 0,
                 "published": true
@@ -76,7 +76,7 @@
                 "name": "Question 4",
                 "body": "Which part of Australia is the Great Barrier Reef located near?",
                 "type": "multiple_choice_question",
-                "options": ["Queensland", "Western Australia", "Victoria"],
+                "options": ["", "Queensland", "Western Australia", "Victoria"],
                 "expected": "Queensland",
                 "points": 2,
                 "published": false
@@ -93,7 +93,7 @@
                 "name": "Question 1",
                 "body": "What is the name of the React Method of rendering?",
                 "type": "multiple_choice_question",
-                "options": ["Hooks", "Classes", "Objects"],
+                "options": ["", "Hooks", "Classes", "Objects"],
                 "expected": "Hooks",
                 "points": 7,
                 "published": false
@@ -103,7 +103,7 @@
                 "name": "Question 2",
                 "body": "What class is this?",
                 "type": "multiple_choice_question",
-                "options": ["275", "725", "257", "752", "527", "572"],
+                "options": ["", "275", "725", "257", "752", "527", "572"],
                 "expected": "275",
                 "points": 3,
                 "published": false
@@ -111,9 +111,9 @@
             {
                 "id": 3,
                 "name": "Question 3",
-                "body": "Mutability?",
+                "body": "!Mutability?",
                 "type": "multiple_choice_question",
-                "options": ["Yes", "No", "Two"],
+                "options": ["", "Yes", "No", "Two"],
                 "expected": "Yes",
                 "points": 10,
                 "published": false

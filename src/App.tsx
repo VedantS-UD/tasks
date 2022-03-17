@@ -26,6 +26,8 @@ function App(): JSX.Element {
                 <li>Respond to Questions</li>
                 <li>Edit Quiz (Partial)</li>
                 <li>Edit Questions (Partial)</li>
+                <li>Filter Quiz Published</li>
+                <li>See Total Points</li>
             </ul>
             <HideTasks></HideTasks>
         </div>

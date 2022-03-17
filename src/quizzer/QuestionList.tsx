@@ -6,11 +6,13 @@ import { QuestionView } from "./QuestionView";
 export function QuestionList({
     questions,
     deleteQuestion,
-    editQuestion
+    editQuestion,
+    filterPublish
 }: {
     questions: Question[];
     deleteQuestion: (id: number) => void;
     editQuestion: (id: number, newQuestion: Question) => void;
+    filterPublish: boolean;
 }): JSX.Element {
     return (
         <Stack gap={3}>
@@ -20,6 +22,7 @@ export function QuestionList({
                         question={q}
                         deleteQuestion={deleteQuestion}
                         editQuestion={editQuestion}
+                        filterPublish={filterPublish}
                     ></QuestionView>
                 </div>
             ))}
