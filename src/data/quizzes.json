@@ -1,0 +1,123 @@
+{
+    "POKEMON_QUIZ": {
+        "identity": 1,
+        "nameQuiz": "Pokemon",
+        "description": "A Quiz about Pokemon",
+        "content": [
+            {
+                "id": 1,
+                "name": "Question 1",
+                "body": "What type is Pikachu?",
+                "type": "multiple_choice_question",
+                "options": ["", "electric", "ice", "fire", "normal", "mouse"],
+                "expected": "electric",
+                "points": 1,
+                "published": false
+            },
+            {
+                "id": 2,
+                "name": "Question 2",
+                "body": "How many gym badges are there before the Elite Four?",
+                "type": "multiple_choice_question",
+                "options": ["", "8", "16", "7", "9"],
+                "expected": "8",
+                "points": 1,
+                "published": false
+            },
+            {
+                "id": 3,
+                "name": "Question 3",
+                "body": "Who is the first generation Champion?",
+                "type": "short_answer_question",
+                "options": [],
+                "expected": "Blue",
+                "points": 2,
+                "published": false
+            }
+        ]
+    },
+    "GEO_QUIZ": {
+        "identity": 2,
+        "nameQuiz": "Geography",
+        "description": "A Quiz about Geography",
+        "content": [
+            {
+                "id": 1,
+                "name": "Question 1",
+                "body": "What was the single landmass that existed during the Triassic Period?",
+                "type": "short_answer_question",
+                "options": [],
+                "expected": "Pangea",
+                "points": 2,
+                "published": true
+            },
+            {
+                "id": 2,
+                "name": "Question 2",
+                "body": "What is the capital of Japan?",
+                "type": "short_answer_question",
+                "options": [],
+                "expected": "Tokyo",
+                "points": 1,
+                "published": false
+            },
+            {
+                "id": 3,
+                "name": "Question 3",
+                "body": "Which of these is not a color on the US Flag?",
+                "type": "multiple_choice_question",
+                "options": ["", "red", "white", "cerulean"],
+                "expected": "cerulean",
+                "points": 0,
+                "published": true
+            },
+            {
+                "id": 4,
+                "name": "Question 4",
+                "body": "Which part of Australia is the Great Barrier Reef located near?",
+                "type": "multiple_choice_question",
+                "options": ["", "Queensland", "Western Australia", "Victoria"],
+                "expected": "Queensland",
+                "points": 2,
+                "published": false
+            }
+        ]
+    },
+    "CS_QUIZ": {
+        "identity": 3,
+        "nameQuiz": "Computer Science",
+        "description": "A Quiz about Computer Science",
+        "content": [
+            {
+                "id": 1,
+                "name": "Question 1",
+                "body": "What is the name of the React Method of rendering?",
+                "type": "multiple_choice_question",
+                "options": ["", "Hooks", "Classes", "Objects"],
+                "expected": "Hooks",
+                "points": 7,
+                "published": false
+            },
+            {
+                "id": 2,
+                "name": "Question 2",
+                "body": "What class is this?",
+                "type": "multiple_choice_question",
+                "options": ["", "275", "725", "257", "752", "527", "572"],
+                "expected": "275",
+                "points": 3,
+                "published": false
+            },
+            {
+                "id": 3,
+                "name": "Question 3",
+                "body": "!Mutability?",
+                "type": "multiple_choice_question",
+                "options": ["", "Yes", "No", "Two"],
+                "expected": "Yes",
+                "points": 10,
+                "published": false
+            }
+        ]
+    }
+}
