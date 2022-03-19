@@ -27,8 +27,13 @@ export function QuizView({
     function filter() {
         setFilterPublish(!filterPublish);
     }
-    function addPoints(p: number) {
-        setTotalPoints(totalPoints + p);
+    function addPoints(a: Answer) {
+        if (a.correct) {
+            const index = questions.findIndex(
+                (q: Question) => q.id === a.questionId
+            );
+            setTotalPoints(totalPoints + questions[index].points);
+        }
     }
     function reset() {
         setAnswers(makeAnswers(quiz.content));

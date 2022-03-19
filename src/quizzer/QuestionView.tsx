@@ -7,24 +7,32 @@ import { MultipleAnswer } from "./MultipleAnswer";
 import { ShortAnswer } from "./ShortAnswer";
 function DisplayAnswer({
     question,
-    setCorrect
+    answer,
+    editAnswer,
+    addPoints
 }: {
     question: Question;
-    setCorrect: (correct: boolean) => void;
+    answer: Answer;
+    editAnswer: (questionId: number, newAnswer: Answer) => void;
+    addPoints: (a: Answer) => void;
 }): JSX.Element {
     if (question.type === "multiple_choice_question") {
         return (
             <MultipleAnswer
                 options={question.options}
                 expectedAnswer={question.expected}
-                setCorrect={setCorrect}
+                answer={answer}
+                editAnswer={editAnswer}
+                addPoints={addPoints}
             ></MultipleAnswer>
         );
     } else {
         return (
             <ShortAnswer
                 expectedAnswer={question.expected}
-                setCorrect={setCorrect}
+                answer={answer}
+                editAnswer={editAnswer}
+                addPoints={addPoints}
             ></ShortAnswer>
         );
     }
@@ -43,22 +51,11 @@ export function QuestionView({
     editQuestion: (id: number, newQuestion: Question) => void;
     answer: Answer;
     editAnswer: (questionId: number, newAnswer: Answer) => void;
-    addPoints: (p: number) => void;
+    addPoints: (a: Answer) => void;
 }): JSX.Element {
     const [edit, setEdit] = useState<boolean>(false);
-    const [correct, setCorrect] = useState<boolean>(answer.correct);
     function changeEdit() {
         setEdit(!edit);
-    }
-    function submit() {
-        if (correct) {
-            addPoints(question.points);
-        }
-        editAnswer(answer.questionId, {
-            ...answer,
-            correct: correct,
-            submitted: true
-        });
     }
     return edit ? (
         <div>
@@ -79,11 +76,10 @@ export function QuestionView({
             </p>
             <DisplayAnswer
                 question={question}
-                setCorrect={setCorrect}
+                answer={answer}
+                editAnswer={editAnswer}
+                addPoints={addPoints}
             ></DisplayAnswer>
-            <Button disabled={answer.submitted} onClick={submit}>
-                Submit
-            </Button>
         </div>
     );
 }
