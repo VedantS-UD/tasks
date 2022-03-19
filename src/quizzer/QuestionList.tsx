@@ -18,7 +18,7 @@ export function QuestionList({
     editQuestion: (id: number, newQuestion: Question) => void;
     answers: Answer[];
     editAnswer: (questionId: number, newAnswer: Answer) => void;
-    addPoints: (p: number) => void;
+    addPoints: (a: Answer) => void;
     filterPublish: boolean;
 }): JSX.Element {
     if (filterPublish) {

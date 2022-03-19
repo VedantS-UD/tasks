@@ -27,11 +27,14 @@ export function QuizView({
     function filter() {
         setFilterPublish(!filterPublish);
     }
-    function addPoints(p: number) {
-        setTotalPoints(totalPoints + p);
+    function addPoints(a: Answer) {
+        const index = questions.findIndex(
+            (q: Question) => q.id === a.questionId
+        );
+        setTotalPoints(totalPoints + questions[index].points);
     }
     function reset() {
-        setAnswers(makeAnswers(quiz.content));
+        setAnswers(makeAnswers(questions));
         setTotalPoints(0);
     }
     function editAnswer(questionId: number, newAnswer: Answer) {
