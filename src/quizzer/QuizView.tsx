@@ -28,15 +28,13 @@ export function QuizView({
         setFilterPublish(!filterPublish);
     }
     function addPoints(a: Answer) {
-        if (a.correct) {
-            const index = questions.findIndex(
-                (q: Question) => q.id === a.questionId
-            );
-            setTotalPoints(totalPoints + questions[index].points);
-        }
+        const index = questions.findIndex(
+            (q: Question) => q.id === a.questionId
+        );
+        setTotalPoints(totalPoints + questions[index].points);
     }
     function reset() {
-        setAnswers(makeAnswers(quiz.content));
+        setAnswers(makeAnswers(questions));
         setTotalPoints(0);
     }
     function editAnswer(questionId: number, newAnswer: Answer) {

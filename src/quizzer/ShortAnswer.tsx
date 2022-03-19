@@ -32,7 +32,9 @@ function UserAnswer({
         if (event.key === "Enter") {
             setAns("");
             editAnswer(answer.questionId, { ...answer, submitted: true });
-            addPoints(answer);
+            if (answer.correct) {
+                addPoints(answer);
+            }
         }
     }
     return (
@@ -51,6 +53,11 @@ function UserAnswer({
                     }}
                 />
             </Form.Group>
+            {answer.submitted && (
+                <span>
+                    {answer.correct ? <span>✔️</span> : <span>❌</span>}
+                </span>
+            )}
         </span>
     );
 }

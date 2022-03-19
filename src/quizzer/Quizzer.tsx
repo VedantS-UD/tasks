@@ -34,7 +34,7 @@ export function Quizzer(): JSX.Element {
     return (
         <div>
             <h3>Quizzer</h3>
-            Only One Shot [Press Enter to Submit]
+            <b>Only One Shot [Press Enter to Submit]</b>
             <QuizList
                 quizzes={quizzes}
                 editQuiz={editQuiz}

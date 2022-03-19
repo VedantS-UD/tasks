@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Answer } from "../interfaces/answer";
 type ChangeEvent = React.ChangeEvent<HTMLSelectElement>;
-type KeyboardEvent = React.KeyboardEvent<HTMLSelectElement>;
 interface AnswerProps {
     selectAns: (cAns: string) => void;
     ans: string;
@@ -25,14 +24,11 @@ function SelectAnswer({
         editAnswer(answer.questionId, {
             ...answer,
             text: event.target.value,
-            correct: event.target.value === expectedAnswer
+            correct: event.target.value === expectedAnswer,
+            submitted: true
         });
-        selectAns(event.target.value);
-    }
-    function handleSubmit(event: KeyboardEvent) {
-        if (event.key === "Enter") {
-            selectAns(options[0]);
-            editAnswer(answer.questionId, { ...answer, submitted: true });
+        selectAns(options[0]);
+        if (event.target.value === expectedAnswer) {
             addPoints(answer);
         }
     }
@@ -43,7 +39,6 @@ function SelectAnswer({
                     disabled={answer.submitted}
                     value={ans}
                     onChange={updateAns}
-                    onKeyDown={handleSubmit}
                     style={{
                         width: "fit-content",
                         display: "-ms-inline-flexbox",
@@ -58,6 +53,11 @@ function SelectAnswer({
                     ))}
                 </Form.Select>
             </Form.Group>
+            {answer.submitted && (
+                <span>
+                    {answer.correct ? <span>✔️</span> : <span>❌</span>}
+                </span>
+            )}
         </span>
     );
 }
