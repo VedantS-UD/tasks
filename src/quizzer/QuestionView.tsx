@@ -7,28 +7,24 @@ import { MultipleAnswer } from "./MultipleAnswer";
 import { ShortAnswer } from "./ShortAnswer";
 function DisplayAnswer({
     question,
-    answer,
-    editAnswer
+    setCorrect
 }: {
     question: Question;
-    answer: Answer;
-    editAnswer: (questionId: number, newAnswer: Answer) => void;
+    setCorrect: (correct: boolean) => void;
 }): JSX.Element {
     if (question.type === "multiple_choice_question") {
         return (
             <MultipleAnswer
                 options={question.options}
                 expectedAnswer={question.expected}
-                answer={answer}
-                editAnswer={editAnswer}
+                setCorrect={setCorrect}
             ></MultipleAnswer>
         );
     } else {
         return (
             <ShortAnswer
                 expectedAnswer={question.expected}
-                answer={answer}
-                editAnswer={editAnswer}
+                setCorrect={setCorrect}
             ></ShortAnswer>
         );
     }
@@ -39,17 +35,30 @@ export function QuestionView({
     deleteQuestion,
     editQuestion,
     answer,
-    editAnswer
+    editAnswer,
+    addPoints
 }: {
     question: Question;
     deleteQuestion: (id: number) => void;
     editQuestion: (id: number, newQuestion: Question) => void;
     answer: Answer;
     editAnswer: (questionId: number, newAnswer: Answer) => void;
+    addPoints: (p: number) => void;
 }): JSX.Element {
     const [edit, setEdit] = useState<boolean>(false);
+    const [correct, setCorrect] = useState<boolean>(answer.correct);
     function changeEdit() {
         setEdit(!edit);
+    }
+    function submit() {
+        if (correct) {
+            addPoints(question.points);
+        }
+        editAnswer(answer.questionId, {
+            ...answer,
+            correct: correct,
+            submitted: true
+        });
     }
     return edit ? (
         <div>
@@ -70,9 +79,11 @@ export function QuestionView({
             </p>
             <DisplayAnswer
                 question={question}
-                answer={answer}
-                editAnswer={editAnswer}
+                setCorrect={setCorrect}
             ></DisplayAnswer>
+            <Button disabled={answer.submitted} onClick={submit}>
+                Submit
+            </Button>
         </div>
     );
 }

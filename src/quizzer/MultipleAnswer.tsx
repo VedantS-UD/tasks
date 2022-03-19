@@ -1,32 +1,23 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Answer } from "../interfaces/answer";
 type ChangeEvent = React.ChangeEvent<HTMLSelectElement>;
 interface AnswerProps {
     selectAns: (cAns: string) => void;
     ans: string;
     options: string[];
-    answer: Answer;
-    editAnswer: (questionId: number, newAnswer: Answer) => void;
     expectedAnswer: string;
+    setCorrect: (correct: boolean) => void;
 }
-
 function SelectAnswer({
     ans,
     selectAns,
     options,
-    answer,
-    editAnswer,
-    expectedAnswer
+    expectedAnswer,
+    setCorrect
 }: AnswerProps): JSX.Element {
     function updateAns(event: ChangeEvent) {
+        setCorrect(event.target.value === expectedAnswer);
         selectAns(event.target.value);
-        editAnswer(answer.questionId, {
-            ...answer,
-            text: event.target.value,
-            submitted: true,
-            correct: event.target.value === expectedAnswer
-        });
     }
     return (
         <span>
@@ -55,26 +46,23 @@ function SelectAnswer({
 export function MultipleAnswer({
     options,
     expectedAnswer,
-    answer,
-    editAnswer
+    setCorrect
 }: {
     options: string[];
     expectedAnswer: string;
-    answer: Answer;
-    editAnswer: (questionId: number, newAnswer: Answer) => void;
+    setCorrect: (correct: boolean) => void;
 }): JSX.Element {
     const [ans, selectAns] = useState<string>(options[0]);
+
     return (
         <div>
             <SelectAnswer
                 ans={ans}
                 selectAns={selectAns}
                 options={options}
-                answer={answer}
-                editAnswer={editAnswer}
                 expectedAnswer={expectedAnswer}
+                setCorrect={setCorrect}
             ></SelectAnswer>
-            {ans === expectedAnswer ? <span>✔️</span> : <span>❌</span>}
         </div>
     );
 }

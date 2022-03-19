@@ -8,18 +8,19 @@ export function QuestionList({
     questions,
     deleteQuestion,
     editQuestion,
+    answers,
     editAnswer,
+    addPoints,
     filterPublish
 }: {
     questions: Question[];
     deleteQuestion: (id: number) => void;
     editQuestion: (id: number, newQuestion: Question) => void;
+    answers: Answer[];
     editAnswer: (questionId: number, newAnswer: Answer) => void;
+    addPoints: (p: number) => void;
     filterPublish: boolean;
 }): JSX.Element {
-    function makeAnswer(q: Question) {
-        return { questionId: q.id, text: "", submitted: false, correct: false };
-    }
     if (filterPublish) {
         const filteredQuestions = questions.filter(
             (question: Question): boolean => question.published
@@ -32,8 +33,15 @@ export function QuestionList({
                             question={q}
                             deleteQuestion={deleteQuestion}
                             editQuestion={editQuestion}
-                            answer={makeAnswer(q)}
+                            answer={
+                                answers[
+                                    answers.findIndex(
+                                        (a: Answer) => q.id === a.questionId
+                                    )
+                                ]
+                            }
                             editAnswer={editAnswer}
+                            addPoints={addPoints}
                         ></QuestionView>
                     </div>
                 ))}
@@ -48,8 +56,15 @@ export function QuestionList({
                         question={q}
                         deleteQuestion={deleteQuestion}
                         editQuestion={editQuestion}
-                        answer={makeAnswer(q)}
+                        answer={
+                            answers[
+                                answers.findIndex(
+                                    (a: Answer) => q.id === a.questionId
+                                )
+                            ]
+                        }
                         editAnswer={editAnswer}
+                        addPoints={addPoints}
                     ></QuestionView>
                 </div>
             ))}

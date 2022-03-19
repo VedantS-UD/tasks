@@ -15,7 +15,7 @@ export function EditQuestion({
 }): JSX.Element {
     const [body, setBody] = useState<string>(question.body);
     const [expected, setExpected] = useState<string>(question.expected);
-    const [options, setOptions] = useState<string[]>(question.options);
+    // const [options, setOptions] = useState<string[]>(question.options);
     const [published, setPublished] = useState<boolean>(question.published);
     const [points, setPoints] = useState<number>(question.points);
     function save() {
@@ -23,7 +23,7 @@ export function EditQuestion({
             ...question,
             body: body,
             expected: expected,
-            options: options,
+            // options: options,
             published: published,
             points: points
         });

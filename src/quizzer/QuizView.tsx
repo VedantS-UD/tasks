@@ -27,6 +27,13 @@ export function QuizView({
     function filter() {
         setFilterPublish(!filterPublish);
     }
+    function addPoints(p: number) {
+        setTotalPoints(totalPoints + p);
+    }
+    function reset() {
+        setAnswers(makeAnswers(quiz.content));
+        setTotalPoints(0);
+    }
     function editAnswer(questionId: number, newAnswer: Answer) {
         setAnswers(
             answers.map(
@@ -42,6 +49,7 @@ export function QuizView({
                     question.id === id ? newQuestion : question
             )
         );
+        //
     }
     function deleteQuestion(id: number) {
         setQuestions(
@@ -49,20 +57,15 @@ export function QuizView({
                 (question: Question): boolean => question.id !== id
             )
         );
-        setAnswers(
-            answers.filter(
-                (answer: Answer): boolean => answer.questionId !== id
-            )
-        );
     }
-    function addQuestion(newQuestion: Question) {
-        const existing = questions.find(
-            (question: Question): boolean => question.id !== newQuestion.id
-        );
-        if (existing === undefined) {
-            setQuestions([...questions, newQuestion]);
-        }
-    }
+    // function addQuestion(newQuestion: Question) {
+    //     const existing = questions.find(
+    //         (question: Question): boolean => question.id !== newQuestion.id
+    //     );
+    //     if (existing === undefined) {
+    //         setQuestions([...questions, newQuestion]);
+    //     }
+    // }
     return editing ? (
         <EditQuiz
             quiz={quiz}
@@ -79,6 +82,7 @@ export function QuizView({
                         {quiz.description}
                         <Button onClick={changeEditing}>Edit Quiz</Button>
                     </p>
+                    <span>{questions.length} Questions</span>
                     <i> Questions: </i>
                 </Col>
             </Row>
@@ -88,7 +92,9 @@ export function QuizView({
                         questions={questions}
                         deleteQuestion={deleteQuestion}
                         editQuestion={editQuestion}
+                        answers={answers}
                         editAnswer={editAnswer}
+                        addPoints={addPoints}
                         filterPublish={filterPublish}
                     ></QuestionList>
                     <Button onClick={filter}>Filter</Button>
@@ -98,6 +104,7 @@ export function QuizView({
                           " out of " +
                           sumPublishedPoints(questions)
                         : totalPoints + " out of " + sumPoints(questions)}
+                    <Button onClick={reset}>Reset</Button>
                 </Col>
             </Row>
         </Container>

@@ -23,14 +23,14 @@ export function Quizzer(): JSX.Element {
         );
     }
 
-    function addQuiz(newQuiz: Quiz) {
-        const existing = quizzes.find(
-            (quiz: Quiz): boolean => quiz.identity === newQuiz.identity
-        );
-        if (existing === undefined) {
-            setQuizzes([...quizzes, newQuiz]);
-        }
-    }
+    // function addQuiz(newQuiz: Quiz) {
+    //     const existing = quizzes.find(
+    //         (quiz: Quiz): boolean => quiz.identity === newQuiz.identity
+    //     );
+    //     if (existing === undefined) {
+    //         setQuizzes([...quizzes, newQuiz]);
+    //     }
+    // }
     return (
         <div>
             <h3>Quizzer</h3>

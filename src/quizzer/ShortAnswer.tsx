@@ -1,30 +1,22 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Answer } from "../interfaces/answer";
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 interface AnswerProps {
     setAns: (newAns: string) => void;
     ans: string;
-    answer: Answer;
-    editAnswer: (questionId: number, newAnswer: Answer) => void;
     expectedAnswer: string;
+    setCorrect: (correct: boolean) => void;
 }
 
 function UserAnswer({
     ans,
     setAns,
-    answer,
-    editAnswer,
-    expectedAnswer
+    expectedAnswer,
+    setCorrect
 }: AnswerProps): JSX.Element {
     function updateAns(event: ChangeEvent) {
+        setCorrect(event.target.value === expectedAnswer);
         setAns(event.target.value);
-        editAnswer(answer.questionId, {
-            ...answer,
-            text: event.target.value,
-            submitted: true,
-            correct: event.target.value === expectedAnswer
-        });
     }
     return (
         <span>
@@ -46,12 +38,10 @@ function UserAnswer({
 
 export function ShortAnswer({
     expectedAnswer,
-    answer,
-    editAnswer
+    setCorrect
 }: {
     expectedAnswer: string;
-    answer: Answer;
-    editAnswer: (questionId: number, newAnswer: Answer) => void;
+    setCorrect: (correct: boolean) => void;
 }): JSX.Element {
     const [ans, setAns] = useState<string>("");
     return (
@@ -59,11 +49,9 @@ export function ShortAnswer({
             <UserAnswer
                 ans={ans}
                 setAns={setAns}
-                answer={answer}
-                editAnswer={editAnswer}
                 expectedAnswer={expectedAnswer}
+                setCorrect={setCorrect}
             ></UserAnswer>
-            {ans === expectedAnswer ? <span>✔️</span> : <span>❌</span>}
         </div>
     );
 }
