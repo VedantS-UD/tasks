@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import pic from "./IceCream.jpg";
+import pic from "./Sketch.png";
 import { HideTasks } from "./quizzer/HideTasks";
 import { Quizzer } from "./quizzer/Quizzer";
 
@@ -15,9 +15,10 @@ function App(): JSX.Element {
             <h1>Sketch</h1>
             <img
                 src={pic}
-                alt="A picture of Ice Cream"
-                width="300"
-                height="400"
+                alt="Sketch"
+                width="900"
+                height="1200"
+                style={{ transform: "rotate(-90deg)" }}
             />
             <h2>Completed Features</h2>
             <ul>
@@ -28,6 +29,8 @@ function App(): JSX.Element {
                 <li>Edit Questions (Partial)</li>
                 <li>Filter Quiz Published</li>
                 <li>See Total Points</li>
+                <li>See Earned Points</li>
+                <li>Reset Quiz</li>
             </ul>
             <HideTasks></HideTasks>
         </div>
