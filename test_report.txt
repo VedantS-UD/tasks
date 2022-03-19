@@ -34,7 +34,7 @@ PASS src/quizzer/EditQuiz.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   87.43 |     87.5 |   80.32 |   86.61 |                   
+All files                    |   86.13 |    81.06 |   79.89 |   85.23 |                   
  src                         |     100 |      100 |     100 |     100 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
@@ -63,21 +63,21 @@ All files                    |   87.43 |     87.5 |   80.32 |   86.61 |
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
   quiz.ts                    |       0 |        0 |       0 |       0 |                   
- src/quizzer                 |    37.8 |     37.5 |   29.41 |    37.8 |                   
+ src/quizzer                 |   34.48 |    30.55 |   28.84 |   34.48 |                   
   EditQuestion.tsx           |       0 |        0 |       0 |       0 | 16-101            
   EditQuiz.tsx               |       0 |      100 |       0 |       0 | 16-66             
   HideTasks.tsx              |   66.66 |       50 |      50 |   66.66 | 23                
-  MultipleAnswer.tsx         |   66.66 |      100 |      75 |   66.66 | 19-20             
+  MultipleAnswer.tsx         |      50 |    16.66 |      75 |      50 | 24-32             
   QuestionList.tsx           |   44.44 |       50 |      50 |   44.44 | 25-39             
-  QuestionView.tsx           |      60 |     62.5 |      50 |      60 | 51-57             
+  QuestionView.tsx           |   83.33 |    83.33 |   66.66 |   83.33 | 58                
   QuizList.tsx               |     100 |      100 |     100 |     100 |                   
-  QuizView.tsx               |   35.29 |       25 |    9.09 |   35.29 | 25-57             
+  QuizView.tsx               |   31.57 |       25 |    8.33 |   31.57 | 25-60             
   Quizzer.tsx                |      50 |        0 |      20 |      50 | 12-22             
-  ShortAnswer.tsx            |      60 |      100 |   66.66 |      60 | 18-19             
+  ShortAnswer.tsx            |      30 |     12.5 |      50 |      30 | 24-36             
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 29 passed, 29 total
 Tests:       144 passed, 144 total
 Snapshots:   0 total
-Time:        12.742 s
+Time:        12.873 s
 Ran all test suites.
