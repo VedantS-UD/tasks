@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 import { Answer } from "../interfaces/answer";
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type KeyboardEvent = React.KeyboardEvent<HTMLInputElement>;
 interface AnswerProps {
-    setAns: (newAns: string) => void;
-    ans: string;
     expectedAnswer: string;
     answer: Answer;
     editAnswer: (questionId: number, newAnswer: Answer) => void;
@@ -13,15 +11,12 @@ interface AnswerProps {
 }
 
 function UserAnswer({
-    ans,
-    setAns,
     expectedAnswer,
     answer,
     editAnswer,
     addPoints
 }: AnswerProps): JSX.Element {
     function updateAns(event: ChangeEvent) {
-        setAns(event.target.value);
         editAnswer(answer.questionId, {
             ...answer,
             text: event.target.value,
@@ -30,7 +25,6 @@ function UserAnswer({
     }
     function handleSubmit(event: KeyboardEvent) {
         if (event.key === "Enter") {
-            setAns("");
             editAnswer(answer.questionId, { ...answer, submitted: true });
             if (answer.correct) {
                 addPoints(answer);
@@ -42,7 +36,7 @@ function UserAnswer({
             <Form.Group controlId="formAnswer">
                 <Form.Control
                     disabled={answer.submitted}
-                    value={ans}
+                    value={answer.text}
                     onChange={updateAns}
                     onKeyDown={handleSubmit}
                     style={{
@@ -73,12 +67,9 @@ export function ShortAnswer({
     editAnswer: (questionId: number, newAnswer: Answer) => void;
     addPoints: (a: Answer) => void;
 }): JSX.Element {
-    const [ans, setAns] = useState<string>("");
     return (
         <div>
             <UserAnswer
-                ans={ans}
-                setAns={setAns}
                 expectedAnswer={expectedAnswer}
                 answer={answer}
                 editAnswer={editAnswer}

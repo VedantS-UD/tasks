@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 import { Answer } from "../interfaces/answer";
 type ChangeEvent = React.ChangeEvent<HTMLSelectElement>;
 interface AnswerProps {
-    selectAns: (cAns: string) => void;
-    ans: string;
     options: string[];
     expectedAnswer: string;
     answer: Answer;
@@ -12,8 +10,6 @@ interface AnswerProps {
     addPoints: (a: Answer) => void;
 }
 function SelectAnswer({
-    ans,
-    selectAns,
     options,
     expectedAnswer,
     answer,
@@ -27,7 +23,6 @@ function SelectAnswer({
             correct: event.target.value === expectedAnswer,
             submitted: true
         });
-        selectAns(options[0]);
         if (event.target.value === expectedAnswer) {
             addPoints(answer);
         }
@@ -37,7 +32,7 @@ function SelectAnswer({
             <Form.Group controlId="selectAnswer">
                 <Form.Select
                     disabled={answer.submitted}
-                    value={ans}
+                    value={answer.text}
                     onChange={updateAns}
                     style={{
                         width: "fit-content",
@@ -75,13 +70,9 @@ export function MultipleAnswer({
     editAnswer: (questionId: number, newAnswer: Answer) => void;
     addPoints: (a: Answer) => void;
 }): JSX.Element {
-    const [ans, selectAns] = useState<string>(options[0]);
-
     return (
         <div>
             <SelectAnswer
-                ans={ans}
-                selectAns={selectAns}
                 options={options}
                 expectedAnswer={expectedAnswer}
                 answer={answer}
