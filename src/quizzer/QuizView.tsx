@@ -75,6 +75,7 @@ export function QuizView({
             deleteQuiz={deleteQuiz}
             editQuiz={editQuiz}
             changeEditing={changeEditing}
+            filter={filter}
         ></EditQuiz>
     ) : (
         <Container>
@@ -100,14 +101,15 @@ export function QuizView({
                         addPoints={addPoints}
                         filterPublish={filterPublish}
                     ></QuestionList>
-                    <Button onClick={filter}>Filter</Button>
                     Points:
                     {filterPublish
                         ? totalPoints +
                           " out of " +
                           sumPublishedPoints(questions)
                         : totalPoints + " out of " + sumPoints(questions)}
-                    <Button onClick={reset}>Reset</Button>
+                    <Button type="reset" onClick={reset}>
+                        Reset
+                    </Button>
                 </Col>
             </Row>
         </Container>

@@ -6,12 +6,14 @@ export function EditQuiz({
     quiz,
     deleteQuiz,
     editQuiz,
-    changeEditing
+    changeEditing,
+    filter
 }: {
     quiz: Quiz;
     deleteQuiz: (identity: number) => void;
     editQuiz: (identity: number, newQuiz: Quiz) => void;
     changeEditing: () => void;
+    filter: () => void;
 }): JSX.Element {
     const [name, setName] = useState<string>(quiz.nameQuiz);
     const [description, setDescription] = useState<string>(quiz.description);
@@ -69,6 +71,7 @@ export function EditQuiz({
                     >
                         Delete
                     </Button>
+                    <Button onClick={filter}>Filter</Button>
                 </Col>
             </Row>
         </Container>
