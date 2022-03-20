@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import pic from "./Sketch.png";
+import pic from "./assets/Sketch.png";
 import { HideTasks } from "./quizzer/HideTasks";
 import { Quizzer } from "./quizzer/Quizzer";
 
